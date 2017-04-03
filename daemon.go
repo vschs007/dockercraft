@@ -1,5 +1,4 @@
 package main
-
 import (
 	"bytes"
 	"encoding/json"
@@ -11,11 +10,9 @@ import (
 	"strings"
 	"sync"
 	"time"
-
 	log "github.com/Sirupsen/logrus"
 	"github.com/fsouza/go-dockerclient"
 )
-
 // TCPMessage defines what a message that can be
 // sent or received to/from LUA scripts
 type TCPMessage struct {
@@ -25,7 +22,6 @@ type TCPMessage struct {
 	ID   int         `json:"id,omitempty"`
 	Data interface{} `json:"data,omitempty"`
 }
-
 // StatsOptionsEntry is used to collect stats from
 //mthe Docker daemon
 type StatsOptionsEntry struct {
@@ -36,7 +32,6 @@ type StatsOptionsEntry struct {
 	// same comment as for statsChan
 	doneChan chan bool
 }
-
 // ContainerEvent is one kind of Data that can
 // be transported by a TCPMessage in the Data field.
 // It describes a Docker container event. (start, stop, destroy...)
@@ -50,7 +45,6 @@ type ContainerEvent struct {
 	RAM       string `json:"ram,omitempty"`
 	Running   bool   `json:"running,omitempty"`
 }
-
 // Daemon maintains state when the dockercraft daemon is running
 type Daemon struct {
 	// Client is an instance of the DockerClient
